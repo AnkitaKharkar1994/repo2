@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Retrive</title>
+{% endblock %}
+
+{% block content %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>STUDENT ID</th>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>DIVISION</th>
+            <th>EMAIL ID</th>
+            <th>MARKS</th>
+            <th>ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for obj in data %}
+        <tr>
+            <td>{{obj.s_id}}</td>
+            <td>{{obj.fname}}</td>
+            <td>{{obj.lname}}</td>
+            <td>{{obj.div}}</td>
+            <td>{{obj.mail}}</td>
+            <td>{{obj.marks}}</td>
+            <td>
+                <a href="{% url 'update' obj.id %}"><button class="btn btn-outline-warning btn-sm me-3">UPDATE</button></a>
+                <a href="{% url 'delete' obj.id %}"><button class="btn btn-outline-danger btn-sm">DELETE</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
